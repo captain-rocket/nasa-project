@@ -7,11 +7,14 @@
     "install-client": "npm install --prefix client",
     "install": "npm run install-server && npm run install-client",
     "server": "npm run watch --prefix server",
-    "client": "npm run start --prefix client",
+    "client": "vite --cwd client",
     "watch": "npm run server & npm run client",
+    "build": "vite build --cwd client",
     "deploy": "npm run build --prefix client && npm run start --prefix server",
-    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
-    "test": "npm test --prefix server && npm test --prefix client"
+    "deploy-cluster": "npm run build && npm run cluster --prefix server",
+    "test-server": "npm test --prefix server",
+    "test-client": "npm test --prefix client",
+    "test": "npm run test-server && npm run test-client"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +26,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.24.7"
   }
 }
