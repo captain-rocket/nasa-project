@@ -34,6 +34,9 @@ yarn-error.log*
 dist/
 build/
 
+# Build output in the server's public folder
+server/public/assets/
+
 # Environment variables
 .env
 .env.local
@@ -51,3 +54,7 @@ tmp/
 .idea/
 *.sublime-workspace
 *.sublime-project
+
+# Ignore Vite cache
+node_modules/.vite/
+.vite/
