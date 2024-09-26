@@ -58,3 +58,4 @@ tmp/
 # Ignore Vite cache
 node_modules/.vite/
 .vite/
+server/public/index.html
