@@ -11,7 +11,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build --outDir ../server/public --emptyOutDir",
-    "test": "vitest",
+    "test": "vitest --passWithNoTests",
     "eject": "echo 'Vite does not support ejecting'"
   },
   "eslintConfig": {
