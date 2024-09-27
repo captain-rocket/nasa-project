@@ -8,17 +8,33 @@ on:
 
 jobs:
   build:
+    env:
+      NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+      CI: true
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js version 20.16.0
+      - name: Use Node.js versions ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: '20.16.0'
+          node-version: ${{ matrix.node-version }}
       - name: Install server dependencies
         run: npm install --prefix server
       - name: Install client dependencies
         run: npm install --prefix client
       - name: Build client
         run: npm run build --prefix client
+      - name: Run tests
+        run: npm test
+      - name: Display npm debug log
+        if: failure()
+        run: cat /home/runner/.npm/_logs/*.log
+      - name: Upload npm logs
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: npm-logs
+          path: /home/runner/.npm/_logs/
