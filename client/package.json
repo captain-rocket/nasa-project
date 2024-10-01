@@ -36,6 +36,7 @@
     "nth-check@1.0.2": "2.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.24.7",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@vitejs/plugin-react": "^4.3.1",
     "vite": "^5.4.8",

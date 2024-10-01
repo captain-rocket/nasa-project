@@ -20,4 +20,9 @@ async function startServer() {
     console.log(log.hl.mission_control(log.decorate.bold(`Listening on ${PORT}...`)));
   });
 }
+process.on('SIGINT', () => {
+  console.log('Shutting down gracefully...');
+  process.exit();
+});
+
 startServer();
